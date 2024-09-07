@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
-import 'package:kross/app/app.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kross/app/extensions/widget_extensions.dart';
 class ArticleCard extends StatelessWidget {
   const ArticleCard({
@@ -10,8 +9,7 @@ class ArticleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-      // для следующей лабораторной работы
-      // context.go('/home/article/1');
+        context.go('/inside_the_house_screen');
       },
       borderRadius: BorderRadius.circular(5),
       child: Row(
@@ -31,6 +29,7 @@ class ArticleCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                10.ph,
                 Text(
                   'Title',
                   maxLines: 1,
@@ -44,6 +43,10 @@ class ArticleCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
+                /*10.ph,
+                ElevatedButton(onPressed:(){
+                  context.go('/inside_the_house_screen');
+                }, child: const Text('Подробнее'))*/
               ],
             ),
           ),
