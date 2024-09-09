@@ -7,8 +7,8 @@ part "home_event.dart";
 part "home_state.dart";
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final KrossRepository krossRepository;
-  HomeBloc(this.krossRepository) : super(HomeInitial()) {
+  final FactsAboutSpaceRepository factsAboutSpaceRepository;
+  HomeBloc(this.factsAboutSpaceRepository) : super(HomeInitial()) {
     on<HomeLoad>(_homeLoad);
   }
   Future<void> _homeLoad(HomeLoad event, Emitter<HomeState> emit) async {
@@ -21,7 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomeLoadInProgress());
 
     try {
-      final articles = await krossRepository.getFactsAboutSpace();
+      final articles = await factsAboutSpaceRepository.getFactsAboutSpace();
       emit(HomeLoadSuccess(articles: articles));
     } catch (exception) {
       emit(HomeLoadFailure(exception: exception));

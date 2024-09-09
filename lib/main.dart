@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kross/app/features/home/bloc/home_bloc.dart';
+import 'package:kross/app/features/features.dart';
 import 'package:kross/di/di.dart';
-import 'package:kross/domain/repository/facts_about_space/facts_about_space_repository.dart';
+import 'package:kross/domain/domain.dart';
 import 'package:kross/kross.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,9 +15,12 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => HomeBloc(getIt<KrossRepository>()),
+          create: (context) => HomeBloc(getIt<FactsAboutSpaceRepository>()),
         ),
         // Другие блоки при необходимости
+        BlocProvider(
+          create: (context) => InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()), // Add this line
+        ),
       ],
       child: MyApp(),
     ),

@@ -1,1 +1,0 @@
-export 'inside_the_house.dart';

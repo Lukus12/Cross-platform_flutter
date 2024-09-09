@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kross/app/app.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kross/app/features/home/bloc/home_bloc.dart';
-import 'package:kross/di/di.dart';
 import 'package:kross/domain/domain.dart';
 
 
@@ -37,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.refresh),
               onPressed: () {
                 final homeBloc = context.read<HomeBloc>();
-                homeBloc.emit(HomeInitial()); // Сбрасываем состояние блока в HomeInitial
+                homeBloc.emit(HomeInitial());// Сбрасываем состояние блока в HomeInitial
+
                 homeBloc.add(const HomeLoad()); // Загружаем данные заново
               },
             ),

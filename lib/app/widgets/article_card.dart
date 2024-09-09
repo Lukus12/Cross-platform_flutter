@@ -18,7 +18,7 @@ class ArticleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go('/inside_the_house_screen/${Uri.encodeComponent(title)}/${Uri.encodeComponent(explanation)}/${Uri.encodeComponent(imageUrl ?? '')}');
+        context.go('/inside_the_home_screen');
       },
       borderRadius: BorderRadius.circular(5),
       child: Row(

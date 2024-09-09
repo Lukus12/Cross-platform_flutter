@@ -3,25 +3,25 @@ import 'package:dio/dio.dart';
 import 'package:kross/data/data.dart';
 import 'package:kross/domain/domain.dart';
 
-class FactsAboutSpaceRepository extends FactsAboutSpaceRepositoryIterface {
-  FactsAboutSpaceRepository({required this.dio});
+class InsideFactsAboutSpaceRepository extends InsideFactsAboutSpaceRepositoryInterface {
+  InsideFactsAboutSpaceRepository({required this.dio});
   final Dio dio;
   @override
-  Future<List<Article>> getFactsAboutSpace() async {
+  @override
+  Future<Article> getFactsAboutSpace() async {
     try {
       final Response response = await dio.get(
         Endpoints.tagApod,
         queryParameters: {
-          'count':'5',
+          'count':'1',
           'thumbs':'1',
         },
       );
 
-      final facts = (response.data as List)
-          .map((e) => Article.fromJson(e))
-          .toList();
-      return facts;
-
+      // Assuming the response always returns a list with one element
+      return Article.fromJson((response.data as List)
+          .first
+      );
     } on DioException catch (e) {
       throw e.message.toString();
     }

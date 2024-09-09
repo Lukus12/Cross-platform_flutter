@@ -1,2 +1,2 @@
-//export 'home/home_screen.dart';
-export 'inside_the_house/inside_the_house_screen.dart';
+export 'home/home.dart';
+export 'inside_the_home/inside_the_home.dart';
