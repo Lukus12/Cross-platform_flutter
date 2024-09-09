@@ -1,1 +1,1 @@
-// TODO Implement this library.
+export 'package:kross/app/extensions/widget_extensions.dart';

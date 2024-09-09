@@ -11,7 +11,6 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   observers: [TalkerRouteObserver(talker)],
   initialLocation: '/home',
-  navigatorKey: _rootNavigationKey,
   routes: <RouteBase>[
     GoRoute(
       path: '/home',
@@ -23,11 +22,19 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/inside_the_house_screen',
+      path: '/inside_the_house_screen/:title/:description/:imageUrl',
       pageBuilder: (context, state) {
+        final title = state.pathParameters['title'] ?? '';
+        final description = state.pathParameters['description'] ?? '';
+        final imageUrl = state.pathParameters['imageUrl'] ?? '';
+
         return NoTransitionPage<void>(
           key: state.pageKey,
-          child: const InsideTheHouse(),
+          child: InsideTheHouse(
+            title: title,
+            description: description,
+            imageUrl: imageUrl,
+          ),
         );
       },
     ),

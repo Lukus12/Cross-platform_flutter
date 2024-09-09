@@ -1,1 +1,1 @@
-// TODO Implement this library.
+export 'package:kross/app/widgets/article_card.dart';
