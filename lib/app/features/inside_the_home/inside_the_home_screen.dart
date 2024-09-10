@@ -10,7 +10,6 @@ class InsideTheHomeScreen extends StatefulWidget {
   State<InsideTheHomeScreen> createState() => InsideTheHomeScreenState();
 }
 
-
 class InsideTheHomeScreenState extends State<InsideTheHomeScreen> {
   @override
   void initState() {
@@ -96,7 +95,7 @@ class InsideTheHomeScreenState extends State<InsideTheHomeScreen> {
         ),
       );
     }
-    return Container(); // Return an empty container by default
+    return Container();
   }
 }
 

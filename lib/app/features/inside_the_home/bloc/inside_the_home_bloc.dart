@@ -16,7 +16,6 @@ class InsideTheHomeBloc extends Bloc<InsideTheHouseEvent, InsideTheHomeState> {
     if (state is InsideHomeLoadSuccess) {
       return; // Завешаем выполнение, если данные уже загружены
     }
-
     // Показать индикатор загрузки
     emit(InsideHomeLoadInProgress());
 
