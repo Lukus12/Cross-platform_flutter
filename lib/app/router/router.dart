@@ -5,8 +5,26 @@ import 'package:talker_flutter/talker_flutter.dart';
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   observers: [TalkerRouteObserver(talker)],
-  initialLocation: '/home',
+  initialLocation: '/auth',
   routes: <RouteBase>[
+    GoRoute(
+      path: '/auth',
+      pageBuilder: (context, state) {
+        return NoTransitionPage<void>(
+          key: state.pageKey,
+          child: const AuthPage(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/reg',
+      pageBuilder: (context, state) {
+        return NoTransitionPage<void>(
+          key: state.pageKey,
+          child: const RegistrationPage(),
+        );
+      },
+    ),
     GoRoute(
       path: '/home',
       pageBuilder: (context, state) {

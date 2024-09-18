@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kross/app/features/features.dart';
@@ -26,12 +27,14 @@ void main() async {
         BlocProvider(
           create: (context) => HomeBloc(getIt<FactsAboutSpaceRepository>()),
         ),
-        // Другие блоки при необходимости
         BlocProvider(
-          create: (context) => InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()), // Add this line
+          create: (context) => InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()),
+        ),
+        BlocProvider(
+          create: (context) => AuthBloc(FirebaseAuth.instance as AuthService),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

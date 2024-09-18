@@ -5,3 +5,6 @@ export 'package:kross/domain/repository/facts_about_space/facts_about_space_repo
 
 export 'package:kross/domain/repository/inside_facts_about_space/inside_facts_about_space_repository.dart';
 export 'package:kross/domain/repository/inside_facts_about_space/inside_facts_about_space_repository_interface.dart';
+
+export 'package:kross/domain/services/auth_service.dart';
+export 'package:kross/domain/services/auth_service_interface.dart';
