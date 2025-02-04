@@ -24,4 +24,6 @@ Future<void> setupLocator() async {
   getIt.registerSingleton<HomeBloc>(HomeBloc(getIt<FactsAboutSpaceRepository>()));
   // Регистрация HomeBloc с использованием зарегистрированного InsideFactsAboutSpaceRepository
   getIt.registerSingleton<InsideTheHomeBloc>(InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()));
+
+  getIt.registerSingleton<AuthRepository>(AuthRepository());
 }

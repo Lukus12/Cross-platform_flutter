@@ -40,6 +40,10 @@ dependencies:
   equatable: ^2.0.5
   flutter_bloc: ^8.1.6
 
+  http:
+  google_sign_in:
+  email_validator:
+
 
   firebase_core: ^3.4.0
   firebase_auth: ^5.2.0

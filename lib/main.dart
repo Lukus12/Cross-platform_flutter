@@ -16,11 +16,13 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await setupLocator();
+  await setupLocator(); // Настройка зависимостей
   FlutterError.onError = (details) => talker.handle(
     details.exception,
     details.stack,
   );
+
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -31,7 +33,7 @@ void main() async {
           create: (context) => InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()),
         ),
         BlocProvider(
-          create: (context) => AuthBloc(FirebaseAuth.instance as AuthService),
+          create: (context) => AuthBloc(getIt<AuthRepository>()),
         ),
       ],
       child: const MyApp(),

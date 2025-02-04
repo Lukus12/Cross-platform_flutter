@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kross/app/features/features.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,10 @@ class AuthPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
-          // Переход на главную страницу при успешной авторизации
+          // Переход на главную страницу при успешной регистрации
           context.go('/home');
         } else if (state is AuthFailure) {
-          // Показать ошибку, если авторизация не удалась
+          // Показать ошибку, если регистрация не удалась
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Ошибка: ${state.message}')),
           );
@@ -32,7 +32,8 @@ class AuthPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Вход в аккаунт',
+                  'Регистрация нового аккаунта',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Inter',
                     color: Color(0xFFFDFDFD),
@@ -53,6 +54,7 @@ class AuthPage extends StatelessWidget {
                       borderSide: const BorderSide(color: Colors.grey),
                     ),
                   ),
+                  keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(color: Color(0xFFFDFDFD)),
                 ),
                 const SizedBox(height: 20),
@@ -75,7 +77,7 @@ class AuthPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     context.read<AuthBloc>().add(
-                      LogInEvent(
+                      SignUpEvent(
                         email: emailController.text,
                         password: passwordController.text,
                       ),
@@ -86,7 +88,7 @@ class AuthPage extends StatelessWidget {
                     minimumSize: const Size(220, 50),
                   ),
                   child: const Text(
-                    'Войти',
+                    'Зарегистрироваться',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -94,13 +96,13 @@ class AuthPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 200),
+                const SizedBox(height: 100),
                 GestureDetector(
                   onTap: () {
-                    context.go('/reg');
+                    context.go('/auth');
                   },
                   child: const Text(
-                    'Зарегистрироваться',
+                    'Авторизироваться',
                     style: TextStyle(
                       fontFamily: 'Inter',
                       color: Color(0xFFFDFDFD),
@@ -113,7 +115,7 @@ class AuthPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      )
     );
   }
 }
