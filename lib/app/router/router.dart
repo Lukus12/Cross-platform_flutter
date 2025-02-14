@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:kross/app/features/favorites/favorites_screen.dart';
 import 'package:kross/app/features/features.dart';
 import 'package:kross/di/di.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -40,6 +41,15 @@ final GoRouter router = GoRouter(
         return NoTransitionPage<void>(
           key: state.pageKey,
           child: const InsideTheHomeScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/favorites',
+      pageBuilder: (context, state) {
+        return NoTransitionPage<void>(
+          key: state.pageKey,
+          child: const FavoritesScreen(),
         );
       },
     ),

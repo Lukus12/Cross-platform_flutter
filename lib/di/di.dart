@@ -5,6 +5,9 @@ import 'package:kross/data/dio/dio.dart';
 import 'package:kross/domain/domain.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+import '../app/features/favorites/bloc/favorites_bloc.dart';
+import '../domain/service/user/user_data_service_interface.dart';
+
 final Dio dio = Dio();
 final getIt = GetIt.instance;
 final talker = TalkerFlutter.init();
@@ -26,4 +29,10 @@ Future<void> setupLocator() async {
   getIt.registerSingleton<InsideTheHomeBloc>(InsideTheHomeBloc(getIt<InsideFactsAboutSpaceRepository>()));
 
   getIt.registerSingleton<AuthRepository>(AuthRepository());
+
+  getIt.registerSingleton<UserDataService>(UserDataService());
+
+  getIt.registerSingleton<FavoritesRepository>(FavoritesRepository(dio: Dio()));
+
+  getIt.registerSingleton<FavoritesBloc>(FavoritesBloc(getIt<FavoritesRepository>()));
 }

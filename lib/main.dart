@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kross/app/features/features.dart';
@@ -6,6 +5,7 @@ import 'package:kross/di/di.dart';
 import 'package:kross/domain/domain.dart';
 import 'package:kross/kross.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'app/features/favorites/bloc/favorites_bloc.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -34,6 +34,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => AuthBloc(getIt<AuthRepository>()),
+        ),
+        BlocProvider(
+          create: (context) => FavoritesBloc(getIt<FavoritesRepository>()),
         ),
       ],
       child: const MyApp(),

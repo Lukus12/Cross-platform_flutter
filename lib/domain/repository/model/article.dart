@@ -3,11 +3,14 @@ part 'article.g.dart';
 @JsonSerializable()
 class Article {
   Article({
+    //required this.id,
     required this.date,
     required this.explanation,
     required this.title,
     required this.imageUrl,
   });
+
+  //final String id;
   final String date;
   final String explanation;
   final String title;

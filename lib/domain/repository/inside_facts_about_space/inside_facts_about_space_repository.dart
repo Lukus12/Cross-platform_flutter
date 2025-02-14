@@ -7,7 +7,6 @@ class InsideFactsAboutSpaceRepository extends InsideFactsAboutSpaceRepositoryInt
   InsideFactsAboutSpaceRepository({required this.dio});
   final Dio dio;
   @override
-  @override
   Future<Article> getFactsAboutSpace() async {
     try {
       final Response response = await dio.get(
@@ -18,7 +17,7 @@ class InsideFactsAboutSpaceRepository extends InsideFactsAboutSpaceRepositoryInt
         },
       );
 
-      // Assuming the response always returns a list with one element
+
       return Article.fromJson((response.data as List)
           .first
       );
